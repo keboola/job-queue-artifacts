@@ -154,15 +154,15 @@ class ArtifactsTest extends TestCase
         yield 'orchestrationId set' => [
             'orchestrationId' => (string) rand(0, 999999),
             'artifactsConfig' => new ArtifactsConfiguration,
-            'currentFilesCount' => 1,
-            'sharedFilesCount' => 1,
+            'expectedCurrentCount' => 1,
+            'expectedSharedCount' => 1,
         ];
 
         yield 'orchestrationId null' => [
             'orchestrationId' => null,
             'artifactsConfig' => new ArtifactsConfiguration,
-            'currentFilesCount' => 1,
-            'sharedFilesCount' => 0,
+            'expectedCurrentCount' => 1,
+            'expectedSharedCount' => 0,
         ];
 
         yield 'no zip' => [
@@ -170,8 +170,8 @@ class ArtifactsTest extends TestCase
             'artifactsConfig' => new ArtifactsConfiguration(
                 options: new Options(zip: false),
             ),
-            'currentFilesCount' => 3,
-            'sharedFilesCount' => 0,
+            'expectedCurrentCount' => 3,
+            'expectedSharedCount' => 0,
             'zip' => false,
         ];
     }
@@ -362,8 +362,8 @@ class ArtifactsTest extends TestCase
     public static function downloadRunsProvider(): Generator
     {
         yield 'runs' => [
-            'branch' => 'branch-123',
-            'component' => 'keboola.component',
+            'branchId' => 'branch-123',
+            'componentId' => 'keboola.component',
             'configId' => '123',
             'artifactsConfig' => new ArtifactsConfiguration(
                 runs: new Runs(
@@ -378,8 +378,8 @@ class ArtifactsTest extends TestCase
         ];
 
         yield 'runs 2' => [
-            'branch' => 'default',
-            'component' => 'keboola.component-2',
+            'branchId' => 'default',
+            'componentId' => 'keboola.component-2',
             'configId' => '456',
             'artifactsConfig' => new ArtifactsConfiguration(
                 runs: new Runs(
@@ -394,9 +394,9 @@ class ArtifactsTest extends TestCase
         ];
 
         yield 'custom' => [
-            'branch' => 'branch-3',
-            'component' => 'branch-3',
-            'config' => '789',
+            'branchId' => 'branch-3',
+            'componentId' => 'branch-3',
+            'configId' => '789',
             'artifactsConfig' => new ArtifactsConfiguration(
                 custom: new Custom(
                     enabled: true,
@@ -413,8 +413,8 @@ class ArtifactsTest extends TestCase
         ];
 
         yield 'custom 2' => [
-            'branch' => 'default',
-            'component' => 'keboola.component',
+            'branchId' => 'default',
+            'componentId' => 'keboola.component',
             'configId' => '999',
             'artifactsConfig' => new ArtifactsConfiguration(
                 custom: new Custom(
@@ -488,8 +488,8 @@ class ArtifactsTest extends TestCase
     public static function downloadRunsProviderNoZip(): Generator
     {
         yield 'runs' => [
-            'branch' => 'branch-123',
-            'component' => 'keboola.component',
+            'branchId' => 'branch-123',
+            'componentId' => 'keboola.component',
             'configId' => '123',
             'artifactsConfig' => new ArtifactsConfiguration(
                 runs: new Runs(
@@ -509,8 +509,8 @@ class ArtifactsTest extends TestCase
         ];
 
         yield 'runs 2' => [
-            'branch' => 'default',
-            'component' => 'keboola.component-2',
+            'branchId' => 'default',
+            'componentId' => 'keboola.component-2',
             'configId' => '456',
             'artifactsConfig' => new ArtifactsConfiguration(
                 runs: new Runs(
@@ -529,9 +529,9 @@ class ArtifactsTest extends TestCase
         ];
 
         yield 'custom' => [
-            'branch' => 'branch-3',
-            'component' => 'branch-3',
-            'config' => '789',
+            'branchId' => 'branch-3',
+            'componentId' => 'branch-3',
+            'configId' => '789',
             'artifactsConfig' => new ArtifactsConfiguration(
                 custom: new Custom(
                     enabled: true,
@@ -553,8 +553,8 @@ class ArtifactsTest extends TestCase
         ];
 
         yield 'custom 2' => [
-            'branch' => 'default',
-            'component' => 'keboola.component',
+            'branchId' => 'default',
+            'componentId' => 'keboola.component',
             'configId' => '999',
             'artifactsConfig' => new ArtifactsConfiguration(
                 custom: new Custom(
