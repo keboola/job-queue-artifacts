@@ -959,11 +959,11 @@ class ArtifactsTest extends TestCase
         $clientWrapper->getBasicClient()->downloadFile($uploadedResult->getStorageFileId(), $downloadedArtifactPath);
 
         if ($unzip) {
-            $filesystem->extractArchive($downloadedArtifactPath, '/tmp');
+            $filesystem->extractArchive($downloadedArtifactPath, '/home/app/tmp');
         }
 
-        $file1 = file_get_contents('/tmp/file1');
-        $file2 = file_get_contents('/tmp/folder/file2');
+        $file1 = file_get_contents('/home/app/tmp/file1');
+        $file2 = file_get_contents('/home/app/tmp/folder/file2');
         self::assertSame('{"foo":"bar"}', $file1);
         self::assertSame('{"foo":"baz"}', $file2);
     }
