@@ -13,14 +13,14 @@ require __DIR__ . '/../vendor/autoload.php';
 if (file_exists(dirname(__DIR__).'/.env')) {
     (new Dotenv())->usePutenv()->bootEnv(dirname(__DIR__) . '/.env', 'dev', []);
 }
-$requiredEnvs = ['STORAGE_API_URL', 'STORAGE_API_TOKEN'];
+$requiredEnvs = ['STORAGE_API_URL', 'TEST_STORAGE_API_TOKEN_MASTER'];
 foreach ($requiredEnvs as $env) {
     if (empty(getenv($env))) {
         throw new Exception(sprintf('Environment variable "%s" is empty', $env));
     }
 }
 
-$client = new Client(['url' => getenv('STORAGE_API_URL'), 'token' => getenv('STORAGE_API_TOKEN')]);
+$client = new Client(['url' => getenv('STORAGE_API_URL'), 'token' => getenv('TEST_STORAGE_API_TOKEN_MASTER')]);
 $tokenInfo = $client->verifyToken();
 print(sprintf(
     'Authorized as "%s (%s)" to project "%s (%s)" at "%s" stack.',

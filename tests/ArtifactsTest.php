@@ -796,7 +796,7 @@ class ArtifactsTest extends TestCase
 
         $client = new Client([
             'url' => (string) getenv('STORAGE_API_URL'),
-            'token' => (string) getenv('STORAGE_API_TOKEN'),
+            'token' => (string) getenv('TEST_STORAGE_API_TOKEN_MASTER'),
         ]);
         $branchesApi = new DevBranches($client);
         $branchId = $branchesApi->createBranch(uniqid(__method__))['id'];
@@ -804,7 +804,7 @@ class ArtifactsTest extends TestCase
         $storageClientWrapper = new ClientWrapper(
             new ClientOptions(
                 url: (string) getenv('STORAGE_API_URL'),
-                token: (string) getenv('STORAGE_API_TOKEN'),
+                token: (string) getenv('TEST_STORAGE_API_TOKEN_MASTER'),
                 useBranchStorage: true,
                 branchId: (string) $branchId,
             ),
@@ -1032,7 +1032,7 @@ class ArtifactsTest extends TestCase
         return new ClientWrapper(
             new ClientOptions(
                 url: (string) getenv('STORAGE_API_URL'),
-                token: (string) getenv('STORAGE_API_TOKEN'),
+                token: (string) getenv('TEST_STORAGE_API_TOKEN_MASTER'),
             ),
         );
     }

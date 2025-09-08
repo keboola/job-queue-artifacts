@@ -1,0 +1,8 @@
+jobs:
+  - template: ../../azure-pipelines/jobs/run-tests.yml
+    parameters:
+      serviceName: ci-artifacts
+      variables:
+        STORAGE_API_URL: $(STORAGE_API_URL__AWS)
+      secrets:
+        TEST_STORAGE_API_TOKEN_MASTER: $(ARTIFACTS__STORAGE_API_TOKEN_MASTER__AWS)
