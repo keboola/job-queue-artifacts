@@ -77,7 +77,7 @@ class ArtifactsTest extends TestCase
     ): void {
         $temp = new Temp();
         $filesystem = new Filesystem($temp->getTmpFolder() . '/tmp', $temp->getTmpFolder() . '/data');
-        $jobId = (string) rand(0, 999999);
+        $jobId = (string) random_int(0, 999999);
         $storageClientWrapper = $this->getStorageClientWrapper();
 
         // upload the artifacts
@@ -151,7 +151,7 @@ class ArtifactsTest extends TestCase
     public static function uploadProvider(): Generator
     {
         yield 'orchestrationId set' => [
-            'orchestrationId' => (string) rand(0, 999999),
+            'orchestrationId' => (string) random_int(0, 999999),
             'artifactsConfig' => new ArtifactsConfiguration,
             'expectedCurrentCount' => 1,
             'expectedSharedCount' => 1,
@@ -231,7 +231,7 @@ class ArtifactsTest extends TestCase
                 'keboola.orchestrator',
                 '123456',
                 '123456789',
-                (string) rand(0, 99999),
+                (string) random_int(0, 99999),
             ),
             new ArtifactsConfiguration,
         );
@@ -346,7 +346,7 @@ class ArtifactsTest extends TestCase
             $branchId,
             $componentId,
             $configId,
-            (string) rand(0, 999999),
+            (string) random_int(0, 999999),
         ), $artifactsConfig);
 
         self::assertCount($expectedCount, $results);
@@ -472,7 +472,7 @@ class ArtifactsTest extends TestCase
             $branchId,
             $componentId,
             $configId,
-            (string) rand(0, 999999),
+            (string) random_int(0, 999999),
         ), $artifactsConfig);
 
         self::assertCount(count($expectedFiles), $result);
@@ -737,8 +737,8 @@ class ArtifactsTest extends TestCase
 
     public function testDownloadShared(): void
     {
-        $orchestrationId = (string) rand(0, 999999);
-        $orchestrationId2 = (string) rand(0, 999999);
+        $orchestrationId = (string) random_int(0, 999999);
+        $orchestrationId2 = (string) random_int(0, 999999);
 
         // generate shared artifacts for a few jobs
         $this->generateAndUploadArtifacts(
@@ -791,7 +791,7 @@ class ArtifactsTest extends TestCase
     public function testUploadUseBranchStorage(): void
     {
         $temp = new Temp();
-        $jobId = (string) rand(0, 999999);
+        $jobId = (string) random_int(0, 999999);
 
         $client = new Client([
             'url' => (string) getenv('STORAGE_API_URL'),
@@ -873,7 +873,7 @@ class ArtifactsTest extends TestCase
                 $branchId,
                 $componentId,
                 $configId,
-                (string) rand(0, 999999),
+                (string) random_int(0, 999999),
                 $orchestrationId,
             ), $artifactsConfig);
         }
@@ -925,7 +925,7 @@ class ArtifactsTest extends TestCase
                 $branchId,
                 'keboola.some-component',
                 'some-config',
-                (string) rand(0, 999999),
+                (string) random_int(0, 999999),
                 $orchestrationId,
             ),
             new ArtifactsConfiguration(
