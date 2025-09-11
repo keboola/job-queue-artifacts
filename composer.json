@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "php": ">=8.4",
+        "php": ">=8.2",
         "ext-json": "*",
         "keboola/job-queue-job-configuration": "^3.0.0|*@dev",
         "keboola/storage-api-client": "^15.1|^16.0|^17.0|^18.0",
