@@ -1,5 +1,5 @@
 {
-    "name": "keboola/artifacts",
+    "name": "keboola/job-queue-artifacts",
     "type": "library",
     "description": "Library for working with artifacts in Job Runner",
     "keywords": [
