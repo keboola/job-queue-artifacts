@@ -1,9 +1,9 @@
 # Artifacts
-Library for managing artifacts in Job Runner (docker-bundle). 
+Library for managing artifacts. 
 
 ## Usage
 ```bash
-composer require keboola/artifacts
+composer require keboola/job-queue-artifacts
 ```
 
 ## Development
