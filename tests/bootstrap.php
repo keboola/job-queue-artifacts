@@ -20,7 +20,10 @@ foreach ($requiredEnvs as $env) {
     }
 }
 
-$client = new Client(['url' => getenv('STORAGE_API_URL'), 'token' => getenv('TEST_STORAGE_API_TOKEN_MASTER')]);
+$client = new Client([
+    'url' => (string) getenv('STORAGE_API_URL'),
+    'token' => (string) getenv('TEST_STORAGE_API_TOKEN_MASTER'),
+]);
 $tokenInfo = $client->verifyToken();
 print(sprintf(
     'Authorized as "%s (%s)" to project "%s (%s)" at "%s" stack.',
