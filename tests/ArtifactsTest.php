@@ -24,6 +24,7 @@ use Keboola\StorageApi\ClientException;
 use Keboola\StorageApi\DevBranches;
 use Keboola\StorageApi\Options\ListFilesOptions;
 use Keboola\StorageApiBranch\ClientWrapper;
+use Keboola\StorageApiBranch\Factory\AuthType;
 use Keboola\StorageApiBranch\Factory\ClientOptions;
 use Keboola\Temp\Temp;
 use Monolog\Handler\TestHandler;
@@ -806,6 +807,7 @@ class ArtifactsTest extends TestCase
                 token: (string) getenv('TEST_STORAGE_API_TOKEN_MASTER'),
                 useBranchStorage: true,
                 branchId: (string) $branchId,
+                authType: AuthType::STORAGE_TOKEN,
             ),
         );
         // upload the artifacts
@@ -1032,6 +1034,7 @@ class ArtifactsTest extends TestCase
             new ClientOptions(
                 url: (string) getenv('STORAGE_API_URL'),
                 token: (string) getenv('TEST_STORAGE_API_TOKEN_MASTER'),
+                authType: AuthType::STORAGE_TOKEN,
             ),
         );
     }
