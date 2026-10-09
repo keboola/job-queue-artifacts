@@ -1,5 +1,5 @@
 # Artifacts
-Library for managing artifacts. 
+Library for managing artifacts.
 
 ## Usage
 ```bash
